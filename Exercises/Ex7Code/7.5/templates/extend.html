@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table>
+        <tr><th>Round {{data[0]['compData']['round']}}</th></tr>
+        {% for personData in data %}
+        <tr>
+            <td>{{personData['Name']}}: {{personData['compData']['score']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

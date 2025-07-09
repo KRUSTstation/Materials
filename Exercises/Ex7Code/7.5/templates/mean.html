@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table>
+        {% for i in range(data | length) %}
+        <tr><th>Round {{i+1}}</th></tr>
+        <td>{{data[i]}}</td>
+        {% endfor %}
+    </table>
+
+{% endblock %}

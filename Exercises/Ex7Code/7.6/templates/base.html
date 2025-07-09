@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Books Info</title>
+</head>
+<body>
+    <h1>Books Not Returned</h1>
+    <table border="1">
+        <tr><th>Name</th>
+        <th>Family Name</th>
+        <th>Book</th></tr>
+
+        {% for name,book in data.items() %}
+            <tr>
+                <td>{{name.split(',')[1]}}</td>
+                <td>{{name.split(',')[0]}}</td>
+                <td>{{book}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
