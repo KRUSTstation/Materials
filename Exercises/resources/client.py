@@ -1,21 +1,36 @@
-def generateKey(key, string):
-    pass
-    # Fill in code here
+def generateKey(password, message):
+    password = str(password)
+    message = str(message)
+    while len(password) < len(message):
+        for char in password:
+            password+=char
+            if len(password) >= len(message):
+                break
 
-    
+    return password
+
 def encrypt(password, message):
-    pass
-    # Fill in code here
+    key = generateKey(password, message)
+    passOrd = [ord(i) for i in key]
+    messOrd = [ord(i) for i in message]
 
+    finalOrd = [passOrd[i] + messOrd[i] for i in range(len(key)) if i<len(messOrd)]
 
+    word = ''.join([chr(i) for i in finalOrd])
+    return word
 
 def decrypt(password, message):
-    pass
-    # Fill in code here
+    key = generateKey(password, message)
+    passOrd = [ord(i) for i in key]
+    messOrd = [ord(i) for i in message]
+
+    finalOrd = [messOrd[i] - passOrd[i] for i in range(len(key))]
+
+    word = ''.join([chr(i) for i in finalOrd])
+    return word
 
 
 # Client program
-
 import socket
 
 
