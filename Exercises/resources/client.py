@@ -14,7 +14,7 @@ def encrypt(password, message):
     passOrd = [ord(i) for i in key]
     messOrd = [ord(i) for i in message]
 
-    finalOrd = [passOrd[i] + messOrd[i] for i in range(len(key)) if i<len(messOrd)]
+    finalOrd = [(passOrd[i] + messOrd[i]) % 256 for i in range(len(key)) if i<len(messOrd)]
 
     word = ''.join([chr(i) for i in finalOrd])
     return word
@@ -24,11 +24,10 @@ def decrypt(password, message):
     passOrd = [ord(i) for i in key]
     messOrd = [ord(i) for i in message]
 
-    finalOrd = [messOrd[i] - passOrd[i] for i in range(len(key))]
+    finalOrd = [(messOrd[i] - passOrd[i]) % 256 for i in range(len(key)) if i<len(messOrd)]
 
     word = ''.join([chr(i) for i in finalOrd])
     return word
-
 
 # Client program
 import socket
